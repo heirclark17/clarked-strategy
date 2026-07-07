@@ -9,7 +9,7 @@
 // Production default points at the live Railway backend, so a Vercel deploy
 // works even before NEXT_PUBLIC_API_URL is set. Local dev overrides this to
 // http://localhost:8000 via .env.local.
-const FALLBACK_API_URL = "https://clarked-backend-production.up.railway.app";
+const FALLBACK_API_URL = "https://clarked-strategy-production.up.railway.app";
 
 export const API_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || FALLBACK_API_URL;
