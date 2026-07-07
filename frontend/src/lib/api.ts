@@ -11,8 +11,7 @@
 // http://localhost:8000 via .env.local.
 const FALLBACK_API_URL = "https://clarked-strategy-production.up.railway.app";
 
-export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || FALLBACK_API_URL;
+export const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || FALLBACK_API_URL;
 
 export type ContactPayload = {
   name: string;

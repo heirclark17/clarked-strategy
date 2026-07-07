@@ -16,13 +16,9 @@ export default function Approach() {
         <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {approach.steps.map((step) => (
             <li key={step.no} className="bg-navy-deep p-8">
-              <span className="font-mono text-3xl font-semibold text-gold">
-                {step.no}
-              </span>
+              <span className="text-gold font-mono text-3xl font-semibold">{step.no}</span>
               <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
-                {step.body}
-              </p>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">{step.body}</p>
             </li>
           ))}
         </ol>

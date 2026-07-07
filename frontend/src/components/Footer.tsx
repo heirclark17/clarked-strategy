@@ -4,18 +4,16 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-line bg-background">
+    <footer className="border-line bg-background mt-auto border-t">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <div className="flex items-center gap-2 font-semibold tracking-tight">
-            <span className="grid h-7 w-7 place-items-center rounded-md bg-navy text-sm font-bold text-white">
+            <span className="bg-navy grid h-7 w-7 place-items-center rounded-md text-sm font-bold text-white">
               C
             </span>
             <span className="text-navy">{site.name}</span>
           </div>
-          <p className="mt-3 text-sm leading-relaxed text-slate">
-            {site.footer.blurb}
-          </p>
+          <p className="text-slate mt-3 text-sm leading-relaxed">{site.footer.blurb}</p>
         </div>
 
         <nav className="flex flex-wrap gap-x-8 gap-y-2">
@@ -23,7 +21,7 @@ export default function Footer() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-slate transition-colors hover:text-navy"
+              className="text-slate hover:text-navy text-sm transition-colors"
             >
               {item.label}
             </a>
@@ -31,8 +29,8 @@ export default function Footer() {
         </nav>
       </div>
 
-      <div className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 text-xs text-slate sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-line border-t">
+        <div className="text-slate mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
