@@ -10,4 +10,4 @@ bcrypt==4.2.1
 PyJWT==2.13.0
 httpx==0.28.1
 stripe==11.4.1
-anthropic==0.69.0
+openai==2.44.0

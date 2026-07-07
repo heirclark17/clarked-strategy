@@ -49,9 +49,9 @@ class Settings(BaseSettings):
     checkout_success_url: str = "https://clarkedstrategygroup.com/success"
     checkout_cancel_url: str = "https://clarkedstrategygroup.com/pricing"
 
-    # --- AI (Anthropic) -----------------------------------------------------
-    anthropic_api_key: str = ""
-    anthropic_model: str = "claude-opus-4-8"
+    # --- AI (OpenAI) --------------------------------------------------------
+    openai_api_key: str = ""
+    openai_model: str = "gpt-4o-mini"
 
     @property
     def cors_origin_list(self) -> list[str]:
@@ -67,7 +67,7 @@ class Settings(BaseSettings):
 
     @property
     def ai_enabled(self) -> bool:
-        return bool(self.anthropic_api_key)
+        return bool(self.openai_api_key)
 
 
 @lru_cache
