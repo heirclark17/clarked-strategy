@@ -1,0 +1,6 @@
+# Normalize line endings — build servers (Vercel/Railway) run Linux.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.svg text

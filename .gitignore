@@ -1,0 +1,26 @@
+# Root ignores (each subproject also has its own .gitignore)
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.db
+*.sqlite3
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log
