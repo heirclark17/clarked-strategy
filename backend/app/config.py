@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     app_name: str = "Clarked Strategy API"
     environment: str = "development"  # development | production
     # Comma-separated list of allowed browser origins for CORS.
-    cors_origins: str = "http://localhost:3000,https://clarkedstrategy.com,https://www.clarkedstrategy.com"
+    cors_origins: str = "http://localhost:3000,https://clarkedstrategygroup.com,https://www.clarkedstrategygroup.com"
 
     # --- Database -----------------------------------------------------------
     # Railway provides this automatically when you attach a Postgres plugin.
@@ -46,8 +46,8 @@ class Settings(BaseSettings):
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""
     # Where Stripe redirects the customer after checkout.
-    checkout_success_url: str = "https://clarkedstrategy.com/success"
-    checkout_cancel_url: str = "https://clarkedstrategy.com/pricing"
+    checkout_success_url: str = "https://clarkedstrategygroup.com/success"
+    checkout_cancel_url: str = "https://clarkedstrategygroup.com/pricing"
 
     # --- AI (Anthropic) -----------------------------------------------------
     anthropic_api_key: str = ""

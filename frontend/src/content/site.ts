@@ -9,7 +9,7 @@
 
 export const site = {
   name: "Clarked Strategy",
-  domain: "clarkedstrategy.com",
+  domain: "clarkedstrategygroup.com",
   tagline: "Security strategy that moves the business forward.",
 
   nav: [

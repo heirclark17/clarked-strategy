@@ -21,7 +21,7 @@ def _render_email(payload: ContactCreate) -> str:
     return f"""
     <div style="font-family:system-ui,Arial,sans-serif;max-width:560px">
       <h2 style="color:#0F2A4A;margin-bottom:4px">New inquiry — Clarked Strategy</h2>
-      <p style="color:#556">Someone reached out through clarkedstrategy.com.</p>
+      <p style="color:#556">Someone reached out through clarkedstrategygroup.com.</p>
       <table style="border-collapse:collapse;width:100%;margin-top:12px">
         <tr><td style="padding:6px 0;color:#889">Name</td><td>{esc(payload.name)}</td></tr>
         <tr><td style="padding:6px 0;color:#889">Email</td><td>{esc(payload.email)}</td></tr>

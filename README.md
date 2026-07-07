@@ -1,6 +1,6 @@
 # Clarked Strategy
 
-Marketing website + backend for **clarkedstrategy.com**.
+Marketing website + backend for **clarkedstrategygroup.com**.
 
 - **`frontend/`** — Next.js 16 marketing site (deploys to **Vercel**).
 - **`backend/`** — FastAPI service: contact form/email, accounts + auth, Stripe payments, and a Claude-powered AI endpoint (deploys to **Railway**).
@@ -13,7 +13,7 @@ All site copy lives in one file: **`frontend/src/content/site.ts`** — edit it 
 
 ```
 Browser ──▶ Vercel (Next.js)  ──fetch──▶  Railway (FastAPI) ──▶ Postgres
- clarkedstrategy.com                       api.clarkedstrategy.com    (Railway plugin)
+ clarkedstrategygroup.com                       api.clarkedstrategygroup.com    (Railway plugin)
                                              │
                                              ├─ Resend   (contact emails)
                                              ├─ Stripe   (checkout/payments)
@@ -75,19 +75,19 @@ git push -u origin main
    ```
    Add `RESEND_API_KEY`, `STRIPE_SECRET_KEY`, `ANTHROPIC_API_KEY` when you want those features on.
 5. Railway builds via Nixpacks and starts `uvicorn app.main:app` (see `backend/railway.json`). Health check: `/health`.
-6. Under **Settings → Networking**, generate a domain or add a custom one, e.g. `api.clarkedstrategy.com`.
+6. Under **Settings → Networking**, generate a domain or add a custom one, e.g. `api.clarkedstrategygroup.com`.
 
 ### 3. Frontend → Vercel
 
 1. **Add New → Project**, import this repo.
 2. Set **Root Directory** to `frontend`.
-3. Add env var **`NEXT_PUBLIC_API_URL`** = your Railway backend URL (e.g. `https://api.clarkedstrategy.com`).
+3. Add env var **`NEXT_PUBLIC_API_URL`** = your Railway backend URL (e.g. `https://api.clarkedstrategygroup.com`).
 4. Deploy. Vercel auto-detects Next.js.
 
-### 4. Domain: clarkedstrategy.com
+### 4. Domain: clarkedstrategygroup.com
 
-- **Vercel** (frontend): Project → Settings → Domains → add `clarkedstrategy.com` and `www.clarkedstrategy.com`. Vercel shows the exact DNS records (A / CNAME) to set at your registrar.
-- **Railway** (backend, optional subdomain): Service → Settings → Networking → Custom Domain → `api.clarkedstrategy.com`, then add the CNAME Railway gives you.
+- **Vercel** (frontend): Project → Settings → Domains → add `clarkedstrategygroup.com` and `www.clarkedstrategygroup.com`. Vercel shows the exact DNS records (A / CNAME) to set at your registrar.
+- **Railway** (backend, optional subdomain): Service → Settings → Networking → Custom Domain → `api.clarkedstrategygroup.com`, then add the CNAME Railway gives you.
 - After DNS propagates, update Vercel's `NEXT_PUBLIC_API_URL` and the backend's `CORS_ORIGINS` to the final domains.
 
 ---

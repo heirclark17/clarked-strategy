@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.app_name,
     version="0.1.0",
-    description="Backend for clarkedstrategy.com — contact, accounts, payments, and AI.",
+    description="Backend for clarkedstrategygroup.com — contact, accounts, payments, and AI.",
     lifespan=lifespan,
 )
 
