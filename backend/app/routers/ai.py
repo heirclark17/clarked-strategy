@@ -39,7 +39,9 @@ async def generate(
     try:
         completion = await client.chat.completions.create(
             model=settings.openai_model,
-            max_tokens=1024,
+            # Newer models (gpt-5.x) require max_completion_tokens; it also works
+            # on gpt-4o, so it's the forward-compatible choice.
+            max_completion_tokens=1024,
             messages=[
                 {"role": "system", "content": payload.system or DEFAULT_SYSTEM},
                 {"role": "user", "content": payload.prompt},
