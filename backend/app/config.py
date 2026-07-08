@@ -42,6 +42,17 @@ class Settings(BaseSettings):
     # Resend allows onboarding@resend.dev for testing.
     contact_from_email: str = "onboarding@resend.dev"
 
+    # --- Security / hardening ----------------------------------------------
+    # Unused scaffolding routers stay UNMOUNTED unless explicitly enabled, to
+    # keep the public attack surface minimal (marketing site needs neither).
+    enable_auth: bool = False
+    enable_payments: bool = False
+    # Reject request bodies larger than this many bytes — the forms are tiny.
+    max_body_bytes: int = 64 * 1024
+    # Per-IP rate limits for the public write endpoints (slowapi syntax).
+    contact_rate_limit: str = "5/minute;30/hour;100/day"
+    discovery_rate_limit: str = "5/minute;20/hour;60/day"
+
     # --- Payments (Stripe) --------------------------------------------------
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""

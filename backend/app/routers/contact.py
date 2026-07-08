@@ -2,13 +2,14 @@
 
 import html
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Request, status
 from sqlalchemy.orm import Session
 
 from ..config import settings
 from ..database import get_db
 from ..email import send_email
 from ..models import ContactMessage
+from ..ratelimit import limiter
 from ..schemas import ContactCreate, ContactResponse
 
 router = APIRouter(prefix="/contact", tags=["contact"])
@@ -34,7 +35,10 @@ def _render_email(payload: ContactCreate) -> str:
 
 
 @router.post("", response_model=ContactResponse, status_code=status.HTTP_201_CREATED)
-async def create_contact(payload: ContactCreate, db: Session = Depends(get_db)) -> ContactMessage:
+@limiter.limit(settings.contact_rate_limit)
+async def create_contact(
+    request: Request, payload: ContactCreate, db: Session = Depends(get_db)
+) -> ContactMessage:
     record = ContactMessage(
         name=payload.name,
         email=payload.email,

@@ -7,13 +7,14 @@ submission is stored regardless.
 
 import html
 
-from fastapi import APIRouter, Depends, Response, status
+from fastapi import APIRouter, Depends, Request, Response, status
 from sqlalchemy.orm import Session
 
 from ..config import settings
 from ..database import get_db
 from ..email import send_email
 from ..models import DiscoverySession
+from ..ratelimit import limiter
 from ..schemas import DiscoveryCreate, DiscoveryResponse
 
 router = APIRouter(prefix="/discovery", tags=["discovery"])
@@ -66,7 +67,10 @@ def _render_email(payload: DiscoveryCreate) -> str:
 
 
 @router.post("", response_model=DiscoveryResponse, status_code=status.HTTP_201_CREATED)
-async def create_discovery(payload: DiscoveryCreate, db: Session = Depends(get_db)):
+@limiter.limit(settings.discovery_rate_limit)
+async def create_discovery(
+    request: Request, payload: DiscoveryCreate, db: Session = Depends(get_db)
+):
     # Anti-spam: a filled honeypot means a bot — accept quietly, persist nothing.
     if payload.honeypot and payload.honeypot.strip():
         return Response(status_code=status.HTTP_201_CREATED)

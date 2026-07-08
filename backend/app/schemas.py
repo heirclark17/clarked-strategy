@@ -1,9 +1,14 @@
 """Pydantic request/response schemas."""
 
 from datetime import datetime
+from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, StringConstraints, field_validator
 from pydantic.alias_generators import to_camel
+
+# A short free-text chip value (e.g. an "Other" platform) — bounded to keep
+# array payloads small.
+ChipStr = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
 
 
 # --- Contact ---------------------------------------------------------------
@@ -52,7 +57,7 @@ class DiscoveryCreate(BaseModel):
     ideal_customer: str = Field(min_length=1, max_length=1000)
     customer_feeling: str = Field(min_length=1, max_length=600)
     early_feedback: str | None = Field(default=None, max_length=1500)
-    audience_platforms: list[str] = Field(min_length=1)
+    audience_platforms: list[ChipStr] = Field(min_length=1, max_length=30)
     objections: str | None = Field(default=None, max_length=1500)
 
     # Step 3 — goals
@@ -72,7 +77,7 @@ class DiscoveryCreate(BaseModel):
     unfair_advantage: str = Field(min_length=1, max_length=1000)
 
     # Step 5 — logistics & assets
-    brand_assets: list[str] = Field(default_factory=list)
+    brand_assets: list[ChipStr] = Field(default_factory=list, max_length=30)
     brand_assets_notes: str | None = Field(default=None, max_length=1000)
     approval_contact_name: str = Field(min_length=1, max_length=200)
     approval_contact_email: EmailStr
