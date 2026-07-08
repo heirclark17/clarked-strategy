@@ -35,10 +35,7 @@ export function Header() {
       }`}
     >
       <Container className="flex h-16 items-center justify-between md:h-[4.5rem]">
-        <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
-          <span className="grid size-9 place-items-center rounded-xl bg-ink font-display text-lg font-bold text-white">
-            C
-          </span>
+        <Link href="/" className="flex items-center" aria-label={`${site.name} home`}>
           <span className="font-display text-lg font-semibold tracking-tight text-ink">
             {site.name}
           </span>

@@ -11,10 +11,7 @@ export function Footer() {
     <footer className="mt-auto bg-ink text-white">
       <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:py-20">
         <div className="max-w-sm">
-          <div className="flex items-center gap-2.5">
-            <span className="grid size-9 place-items-center rounded-xl bg-white font-display text-lg font-bold text-ink">
-              C
-            </span>
+          <div className="flex items-center">
             <span className="font-display text-lg font-semibold tracking-tight">{site.name}</span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/60">{site.footer.blurb}</p>
