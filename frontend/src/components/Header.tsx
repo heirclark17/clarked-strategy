@@ -1,70 +1,99 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 
-export default function Header() {
+export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Lock body scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="border-line/70 bg-background/85 sticky top-0 z-50 border-b backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="bg-navy grid h-7 w-7 place-items-center rounded-md text-sm font-bold text-white">
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? "border-b border-line/70 bg-paper/85 backdrop-blur-md"
+          : "border-b border-transparent"
+      }`}
+    >
+      <Container className="flex h-16 items-center justify-between md:h-[4.5rem]">
+        <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
+          <span className="grid size-9 place-items-center rounded-xl bg-ink font-display text-lg font-bold text-white">
             C
           </span>
-          <span className="text-navy">{site.name}</span>
-        </a>
+          <span className="font-display text-lg font-semibold tracking-tight text-ink">
+            {site.name}
+          </span>
+        </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
-              className="text-slate hover:text-navy text-sm font-medium transition-colors"
+              className="rounded-full px-4 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-ink/[0.05] hover:text-ink"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
-            className="bg-navy hover:bg-navy-deep rounded-full px-4 py-2 text-sm font-semibold text-white transition-colors"
-          >
-            Get in touch
-          </a>
         </nav>
+
+        <div className="hidden md:block">
+          <Button href={site.cta.href} size="md">
+            {site.cta.label}
+            <ArrowRight className="size-4" aria-hidden />
+          </Button>
+        </div>
 
         <button
           type="button"
-          aria-label="Toggle menu"
+          className="grid size-11 place-items-center rounded-xl text-ink md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="border-line text-navy grid h-9 w-9 place-items-center rounded-md border md:hidden"
         >
-          <div className="space-y-1">
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-          </div>
+          {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
         </button>
-      </div>
+      </Container>
 
-      {open && (
-        <nav className="border-line bg-background border-t px-6 py-4 md:hidden">
-          <div className="flex flex-col gap-3">
+      {open ? (
+        <div className="border-t border-line bg-paper md:hidden">
+          <Container className="flex flex-col gap-1 py-4">
             {site.nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-slate hover:text-navy text-sm font-medium"
+                className="rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-ink/[0.05]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-          </div>
-        </nav>
-      )}
+            <Button href={site.cta.href} size="lg" className="mt-2 w-full">
+              {site.cta.label}
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          </Container>
+        </div>
+      ) : null}
     </header>
   );
 }

@@ -3,25 +3,20 @@
  *
  * Set NEXT_PUBLIC_API_URL in the environment (Vercel project settings) to your
  * Railway backend URL, e.g. https://clarked-strategy-api.up.railway.app
- * Falls back to localhost for development.
+ * Falls back to the live Railway backend so a deploy works before the env var
+ * is set. For local dev against a local backend, set NEXT_PUBLIC_API_URL in
+ * .env.local (e.g. http://localhost:8000).
  */
 
-// Production default points at the live Railway backend, so a Vercel deploy
-// works even before NEXT_PUBLIC_API_URL is set. Local dev overrides this to
-// http://localhost:8000 via .env.local.
+import type { DiscoveryFormValues } from "@/lib/discovery-schema";
+
 const FALLBACK_API_URL = "https://clarked-strategy-production.up.railway.app";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || FALLBACK_API_URL;
 
-export type ContactPayload = {
-  name: string;
-  email: string;
-  company?: string;
-  message: string;
-};
-
-export async function submitContact(payload: ContactPayload): Promise<void> {
-  const res = await fetch(`${API_URL}/contact`, {
+/** POST JSON and throw a human-readable Error on a non-2xx response. */
+async function postJson(path: string, payload: unknown): Promise<Response> {
+  const res = await fetch(`${API_URL}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -37,4 +32,26 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
     }
     throw new Error(detail);
   }
+  return res;
+}
+
+/* ---- Contact (generic inquiry) ---------------------------------------- */
+export type ContactPayload = {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+};
+
+export async function submitContact(payload: ContactPayload): Promise<void> {
+  await postJson("/contact", payload);
+}
+
+/* ---- Discovery Session intake ----------------------------------------- */
+// The payload is the validated form values. Field names match the backend
+// DiscoveryCreate (Pydantic) schema exactly.
+export type DiscoveryPayload = DiscoveryFormValues;
+
+export async function submitDiscovery(payload: DiscoveryPayload): Promise<void> {
+  await postJson("/discovery", payload);
 }

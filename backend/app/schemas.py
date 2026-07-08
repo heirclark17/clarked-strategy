@@ -2,7 +2,8 @@
 
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
+from pydantic.alias_generators import to_camel
 
 
 # --- Contact ---------------------------------------------------------------
@@ -20,6 +21,87 @@ class ContactResponse(BaseModel):
     name: str
     email: EmailStr
     company: str | None
+    emailed: bool
+    created_at: datetime
+
+
+# --- Discovery Session -----------------------------------------------------
+# Field names mirror the frontend Zod schema (src/lib/discovery-schema.ts).
+# The request arrives as camelCase JSON; the alias generator maps it onto these
+# snake_case fields. This is the server-side re-validation of the intake form.
+class DiscoveryCreate(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=to_camel,
+        populate_by_name=True,
+        str_strip_whitespace=True,
+    )
+
+    # Step 0 — details
+    full_name: str = Field(min_length=1, max_length=200)
+    company_name: str = Field(min_length=1, max_length=200)
+    work_email: EmailStr
+    phone: str | None = Field(default=None, max_length=40)
+
+    # Step 1 — product
+    problem_solved: str = Field(min_length=1, max_length=300)
+    stage: str = Field(min_length=1, max_length=80)
+    launch_date: str | None = Field(default=None, max_length=80)
+    features_not_ready: str | None = Field(default=None, max_length=1500)
+
+    # Step 2 — audience
+    ideal_customer: str = Field(min_length=1, max_length=1000)
+    customer_feeling: str = Field(min_length=1, max_length=600)
+    early_feedback: str | None = Field(default=None, max_length=1500)
+    audience_platforms: list[str] = Field(min_length=1)
+    objections: str | None = Field(default=None, max_length=1500)
+
+    # Step 3 — goals
+    success30: str = Field(min_length=1, max_length=1000)
+    success60: str | None = Field(default=None, max_length=1000)
+    success90: str | None = Field(default=None, max_length=1000)
+    top_priority: str = Field(min_length=1, max_length=80)
+    monetization: str = Field(min_length=1, max_length=80)
+    stakeholders: str | None = Field(default=None, max_length=600)
+
+    # Step 4 — competitive landscape
+    competitor1: str = Field(min_length=1, max_length=200)
+    competitor2: str | None = Field(default=None, max_length=200)
+    competitor3: str | None = Field(default=None, max_length=200)
+    differentiation: str = Field(min_length=1, max_length=1000)
+    competitor_notes: str | None = Field(default=None, max_length=1500)
+    unfair_advantage: str = Field(min_length=1, max_length=1000)
+
+    # Step 5 — logistics & assets
+    brand_assets: list[str] = Field(default_factory=list)
+    brand_assets_notes: str | None = Field(default=None, max_length=1000)
+    approval_contact_name: str = Field(min_length=1, max_length=200)
+    approval_contact_email: EmailStr
+    review_process: str | None = Field(default=None, max_length=1000)
+    revision_rounds: str | None = Field(default=None, max_length=40)
+    turnaround: str | None = Field(default=None, max_length=200)
+    budget_range: str = Field(min_length=1, max_length=80)
+    budget_flexible: bool = False
+
+    # Final + consent + anti-spam
+    additional_notes: str | None = Field(default=None, max_length=2000)
+    consent: bool
+    honeypot: str | None = None
+
+    @field_validator("consent")
+    @classmethod
+    def _must_consent(cls, v: bool) -> bool:
+        if v is not True:
+            raise ValueError("Consent is required to submit a Discovery Session.")
+        return v
+
+
+class DiscoveryResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    full_name: str
+    company_name: str
+    email: EmailStr
     emailed: bool
     created_at: datetime
 

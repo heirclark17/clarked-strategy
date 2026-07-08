@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import settings
 from .database import init_db
-from .routers import ai, auth, contact, payments
+from .routers import ai, auth, contact, discovery, payments
 
 logging.basicConfig(level=logging.INFO)
 
@@ -38,6 +38,7 @@ app.add_middleware(
 )
 
 app.include_router(contact.router)
+app.include_router(discovery.router)
 app.include_router(auth.router)
 app.include_router(payments.router)
 app.include_router(ai.router)
