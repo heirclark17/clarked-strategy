@@ -36,8 +36,8 @@ class Settings(BaseSettings):
 
     # --- Email (Resend) -----------------------------------------------------
     resend_api_key: str = ""
-    # Where contact-form submissions are delivered.
-    contact_to_email: str = "derrick88clark@yahoo.com"
+    # Where contact-form and Discovery Session submissions are delivered.
+    contact_to_email: str = "diamond.clark@clarkedstrategygroup.com"
     # Verified sender on your Resend domain. Until the domain is verified,
     # Resend allows onboarding@resend.dev for testing.
     contact_from_email: str = "onboarding@resend.dev"

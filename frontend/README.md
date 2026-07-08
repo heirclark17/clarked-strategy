@@ -108,9 +108,14 @@ The backend (`../backend`) already persists every submission to a
 `discovery_sessions` table (structured columns + a `details` JSON blob). To also
 **email** each lead:
 
-1. On Railway, set `RESEND_API_KEY` (and verify a sender for `CONTACT_FROM_EMAIL`).
-2. Point `CONTACT_TO_EMAIL` at the studio inbox (currently defaults to the owner's
-   personal address). Notifications go there.
+1. `RESEND_API_KEY` is already set on Railway (prod `email: true`).
+2. `CONTACT_TO_EMAIL` sets the recipient — defaults to
+   `diamond.clark@clarkedstrategygroup.com` (also set as a Railway env var, which
+   takes precedence over the code default).
+3. Deliverability: `CONTACT_FROM_EMAIL` still uses Resend's test sender
+   (`onboarding@resend.dev`), which can only send to the Resend account's own
+   address until you **verify the clarkedstrategygroup.com domain in Resend** and
+   set `CONTACT_FROM_EMAIL` to a domain address (e.g. `hello@clarkedstrategygroup.com`).
 
 Submissions are stored even when email is off. To forward to a CRM instead, extend
 `backend/app/routers/discovery.py` (persist-then-notify pattern).
