@@ -31,7 +31,7 @@ export function Process() {
             {site.cta.label}
             <ArrowRight className="size-4" aria-hidden />
           </Button>
-          <p className="text-sm text-muted">Free, no obligation — takes about 10 minutes.</p>
+          <p className="text-sm text-muted">Free, no obligation. Takes about 10 minutes.</p>
         </div>
       </Container>
     </section>

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * Client Discovery Session — single source of truth for the intake form.
+ * Client Discovery Session - single source of truth for the intake form.
  *
  * This Zod schema powers BOTH client-side validation (React Hook Form) and,
  * mirrored in Pydantic, server-side validation on the FastAPI /discovery
@@ -28,7 +28,7 @@ export const MONETIZATION_OPTIONS = [
   "Service retainer",
   "Other",
 ] as const;
-export const BUDGET_OPTIONS = ["< $2k", "$2k–$5k", "$5k–$10k", "$10k–$25k", "$25k+"] as const;
+export const BUDGET_OPTIONS = ["< $2k", "$2k-$5k", "$5k-$10k", "$10k-$25k", "$25k+"] as const;
 export const REVISION_OPTIONS = ["1", "2", "3", "Unlimited"] as const;
 export const PLATFORM_OPTIONS = [
   "LinkedIn",
@@ -80,7 +80,7 @@ const requiredChoice = (options: readonly string[], message: string) =>
 
 /* ---- The schema -------------------------------------------------------- */
 export const discoverySchema = z.object({
-  // Step 0 — Your details
+  // Step 0 - Your details
   fullName: requiredText("Please enter your full name.", 200),
   companyName: requiredText("Please enter your company or brand name.", 200),
   workEmail: emailField(),
@@ -93,8 +93,8 @@ export const discoverySchema = z.object({
       message: "Enter a valid phone number, like (555) 123-4567.",
     }),
 
-  // Step 1 — The product
-  problemSolved: requiredText("Describe the problem you solve — one sentence is perfect.", 300),
+  // Step 1 - The product
+  problemSolved: requiredText("Describe the problem you solve. One sentence is perfect.", 300),
   stage: requiredChoice(STAGE_OPTIONS, "Please select the current stage."),
   launchDate: z
     .string()
@@ -106,7 +106,7 @@ export const discoverySchema = z.object({
     }),
   featuresNotReady: optionalText(1500),
 
-  // Step 2 — The audience
+  // Step 2 - The audience
   idealCustomer: requiredText("Describe your ideal customer or user.", 1000),
   customerFeeling: requiredText("Describe what they’re feeling when they find you.", 600),
   earlyFeedback: optionalText(1500),
@@ -115,7 +115,7 @@ export const discoverySchema = z.object({
     .min(1, { message: "Pick at least one place your audience spends time." }),
   objections: optionalText(1500),
 
-  // Step 3 — The goals
+  // Step 3 - The goals
   success30: requiredText("Tell us what success looks like at 30 days.", 1000),
   success60: optionalText(1000),
   success90: optionalText(1000),
@@ -123,7 +123,7 @@ export const discoverySchema = z.object({
   monetization: requiredChoice(MONETIZATION_OPTIONS, "Please select a monetization model."),
   stakeholders: optionalText(600),
 
-  // Step 4 — Competitive landscape
+  // Step 4 - Competitive landscape
   competitor1: requiredText("Name at least one direct competitor.", 200),
   competitor2: optionalText(200),
   competitor3: optionalText(200),
@@ -131,7 +131,7 @@ export const discoverySchema = z.object({
   competitorNotes: optionalText(1500),
   unfairAdvantage: requiredText("Describe your unfair advantage.", 1000),
 
-  // Step 5 — Logistics & assets
+  // Step 5 - Logistics & assets
   brandAssets: z.array(z.string().trim().min(1)),
   brandAssetsNotes: optionalText(1000),
   approvalContactName: requiredText("Who approves work?", 200),
@@ -237,7 +237,7 @@ export const STEPS = [
   {
     id: "logistics",
     title: "Logistics & assets",
-    blurb: "How we’ll work together — and anything else.",
+    blurb: "How we’ll work together, and anything else.",
     fields: [
       "brandAssets",
       "brandAssetsNotes",

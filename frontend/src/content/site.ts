@@ -1,12 +1,12 @@
 /**
  * Single source of truth for all site copy.
  *
- * ⚑ EDIT THIS FILE to change what the visitor reads — headlines, services,
+ * ⚑ EDIT THIS FILE to change what the visitor reads - headlines, services,
  * case studies, testimonials, contact details all live here. Placeholders that
  * need real data are marked with `TODO:` comments.
  *
  * Functional form config (field options, validation) lives separately in
- * src/lib/discovery-schema.ts — this file is prose only.
+ * src/lib/discovery-schema.ts - this file is prose only.
  */
 
 export const site = {
@@ -28,7 +28,7 @@ export const site = {
   hero: {
     eyebrow: "Marketing strategy studio",
     titleLead: "Turn a fuzzy brand idea into",
-    // Cycled in the hero headline — each is the payoff half of the sentence.
+    // Cycled in the hero headline - each is the payoff half of the sentence.
     kineticWords: [
       "a strategy that ships.",
       "a launch that lands.",
@@ -43,7 +43,7 @@ export const site = {
 
   trust: {
     heading: "Trusted by founders from pre-seed through Series B",
-    // Quiet credibility strip — swap for real client logos when available.
+    // Quiet credibility strip - swap for real client logos when available.
     signals: [
       "Pre-seed → Series B",
       "B2B SaaS & consumer",
@@ -69,11 +69,11 @@ export const site = {
     eyebrow: "What we do",
     title: "One team, from the first idea to the first result.",
     subtitle:
-      "We scope to where you actually are — not a generic retainer. Most engagements combine a few of these.",
+      "We scope to where you actually are, not a generic retainer. Most engagements combine a few of these.",
     items: [
       {
         title: "Brand strategy",
-        body: "The story, the point of view, and the reason you win — turned into a foundation your whole team can build on.",
+        body: "The story, the point of view, and the reason you win, turned into a foundation your whole team can build on.",
       },
       {
         title: "Positioning & messaging",
@@ -81,7 +81,7 @@ export const site = {
       },
       {
         title: "Go-to-market",
-        body: "A concrete plan with owners, channels, and a sequence — so launch day is execution, not improvisation.",
+        body: "A concrete plan with owners, channels, and a sequence, so launch day is execution, not improvisation.",
       },
       {
         title: "Content & organic",
@@ -89,7 +89,7 @@ export const site = {
       },
       {
         title: "Paid acquisition",
-        body: "Creative and channels tested against real economics — scaling what pays back, killing what doesn’t.",
+        body: "Creative and channels tested against real economics: scaling what pays back, killing what doesn’t.",
       },
       {
         title: "Launch planning",
@@ -148,12 +148,12 @@ export const site = {
     eyebrow: "How we work",
     title: "Discovery-first, always.",
     subtitle:
-      "We don’t start with tactics. We start by understanding your product, your buyer, and what winning actually looks like — which is exactly what the Discovery Session kicks off.",
+      "We don’t start with tactics. We start by understanding your product, your buyer, and what winning actually looks like, which is exactly what the Discovery Session kicks off.",
     steps: [
       {
         no: "01",
         title: "Discover",
-        body: "We map the product, the audience, the goals, and the competition — so strategy is built on your reality, not a template.",
+        body: "We map the product, the audience, the goals, and the competition, so strategy is built on your reality, not a template.",
       },
       {
         no: "02",
@@ -163,7 +163,7 @@ export const site = {
       {
         no: "03",
         title: "Build",
-        body: "We produce the assets — narrative, creative, pages, and campaigns — ready to ship, not stuck in review.",
+        body: "We produce the assets (narrative, creative, pages, and campaigns), ready to ship, not stuck in review.",
       },
       {
         no: "04",
@@ -182,11 +182,11 @@ export const site = {
     eyebrow: "About",
     title: "A studio, not an agency machine.",
     body: [
-      "Clarked Strategy is a small, senior marketing studio. You work with the people doing the work — no account layers, no hand-offs to a junior team you never met on the pitch call.",
-      "We started this because most founders don’t have a marketing problem — they have a clarity problem. The product is real. The story isn’t sharp yet. We exist to fix that, then build the engine that turns a sharp story into growth you can measure.",
+      "Clarked Strategy is a small, senior marketing studio. You work with the people doing the work. No account layers, no hand-offs to a junior team you never met on the pitch call.",
+      "We started this because most founders don’t have a marketing problem. They have a clarity problem. The product is real. The story isn’t sharp yet. We exist to fix that, then build the engine that turns a sharp story into growth you can measure.",
     ],
     points: [
-      "Senior operators on every engagement — no bait-and-switch",
+      "Senior operators on every engagement, no bait-and-switch",
       "Opinionated strategy, backed by what the numbers say",
       "We leave you with a playbook, not a dependency",
     ],
@@ -205,7 +205,7 @@ export const site = {
       },
       {
         quote:
-          "Most agencies sell you a retainer. Clarked sold us a plan we could actually run — and then ran it with us. Our best launch by a wide margin.",
+          "Most agencies sell you a retainer. Clarked sold us a plan we could actually run, and then ran it with us. Our best launch by a wide margin.",
         name: "Co-founder",
         role: "Consumer mobile app",
       },
@@ -221,7 +221,7 @@ export const site = {
   finalCta: {
     title: "Let’s find the story that makes your product obvious.",
     subtitle:
-      "Start with a Client Discovery Session. It’s where we learn your product, your buyer, and your goals — and where the best engagements begin.",
+      "Start with a Client Discovery Session. It’s where we learn your product, your buyer, and your goals, where the best engagements begin.",
     primaryCta: { label: "Start a Discovery Session", href: "/discovery" },
   },
 

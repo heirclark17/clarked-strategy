@@ -4,7 +4,7 @@ import "./globals.css";
 import { site } from "@/content/site";
 
 /**
- * Fonts (self-hosted via next/font — zero layout shift).
+ * Fonts (self-hosted via next/font - zero layout shift).
  * - Display: Bricolage Grotesque (characterful, variable) → font-display
  * - Body:    Inter (clean, legible)                       → font-body / font-sans
  * - Mono:    Geist Mono (numerals, eyebrows, step badges) → font-mono
@@ -29,7 +29,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const title = `${site.name} — ${site.tagline}`;
+const title = `${site.name} | ${site.tagline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),

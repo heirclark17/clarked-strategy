@@ -28,7 +28,7 @@ async function postJson(path: string, payload: unknown): Promise<Response> {
       const data = await res.json();
       if (typeof data?.detail === "string") detail = data.detail;
     } catch {
-      /* non-JSON error body — keep the default message */
+      /* non-JSON error body - keep the default message */
     }
     throw new Error(detail);
   }

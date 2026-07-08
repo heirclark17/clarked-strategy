@@ -24,7 +24,7 @@ export function Work() {
           {site.work.caseStudies.map((cs, i) => (
             <Reveal key={cs.client} delay={i * 0.05}>
               <article className="group grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] md:grid-cols-2">
-                {/* Visual panel — TODO: swap gradient for a real case-study image */}
+                {/* Visual panel - TODO: swap gradient for a real case-study image */}
                 <div className="relative min-h-[220px] overflow-hidden md:min-h-[320px]">
                   <div
                     aria-hidden

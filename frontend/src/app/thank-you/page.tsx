@@ -24,14 +24,14 @@ export default function ThankYouPage() {
           </span>
 
           <h1 className="mt-8 font-display text-display font-semibold tracking-tight text-balance">
-            Got it — this is the fun part for us.
+            Got it. This is the fun part for us.
           </h1>
           <p className="mt-5 max-w-lg text-lg text-white/75">
             Thanks for the detail. We’re already reading it. You’ll hear back from us at{" "}
             <a href={`mailto:${site.email}`} className="font-medium text-white underline underline-offset-4">
               {site.email}
             </a>{" "}
-            within one business day — usually with a first read on where the biggest opportunity is.
+            within one business day, usually with a first read on where the biggest opportunity is.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">

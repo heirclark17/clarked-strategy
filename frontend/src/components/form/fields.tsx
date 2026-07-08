@@ -352,7 +352,7 @@ export function ChipMultiSelect({
             commit(knownSelected, e.target.value);
           }}
           onBlur={() => field.onBlur()}
-          aria-label={`${label} — other`}
+          aria-label={`${label}, other`}
           className={`${inputBase} mt-3 ${borderClass(false, false)}`}
         />
       ) : null}

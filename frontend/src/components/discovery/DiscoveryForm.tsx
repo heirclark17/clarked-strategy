@@ -112,7 +112,7 @@ function StepFields({ step }: { step: number }) {
             label="Target launch date or next major milestone"
             type="date"
             optional
-            hint="A rough date is fine — or leave it blank."
+            hint="A rough date is fine, or leave it blank."
           />
           <TextArea
             name="featuresNotReady"
@@ -135,7 +135,7 @@ function StepFields({ step }: { step: number }) {
             name="customerFeeling"
             label="What is that person feeling when they find you?"
             required
-            hint="e.g. frustrated, anxious, hopeful, overwhelmed — be specific."
+            hint="e.g. frustrated, anxious, hopeful, overwhelmed. Be specific."
             rows={2}
           />
           <TextArea
@@ -209,7 +209,7 @@ function StepFields({ step }: { step: number }) {
           />
           <TextArea
             name="unfairAdvantage"
-            label="What is your unfair advantage — something they can’t easily replicate?"
+            label="What is your unfair advantage, something they can’t easily replicate?"
             required
           />
         </>
@@ -295,8 +295,8 @@ export function DiscoveryForm() {
   const methods = useForm<DiscoveryFormValues>({
     resolver: zodResolver(discoverySchema),
     defaultValues: discoveryDefaults,
-    // Validate fields first on blur (not on every keystroke), then — once a
-    // field has an error — re-check on change so the error clears the moment
+    // Validate fields first on blur (not on every keystroke), then - once a
+    // field has an error - re-check on change so the error clears the moment
     // the user fixes it.
     mode: "onBlur",
     reValidateMode: "onChange",
@@ -323,7 +323,7 @@ export function DiscoveryForm() {
       try {
         methods.setFocus(first);
       } catch {
-        /* non-focusable control (e.g. chip group) — fall back to scroll */
+        /* non-focusable control (e.g. chip group) - fall back to scroll */
       }
       document.getElementById(first)?.scrollIntoView({ block: "center", behavior: "smooth" });
     }
@@ -415,7 +415,7 @@ export function DiscoveryForm() {
           <StepFields step={step} />
         </div>
 
-        {/* Honeypot — visually hidden, off the tab order. Bots fill it; humans don't. */}
+        {/* Honeypot - visually hidden, off the tab order. Bots fill it; humans don't. */}
         <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
           <label htmlFor="company_website">Company website</label>
           <input

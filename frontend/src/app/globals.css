@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   Clarked Strategy — design tokens
+   Clarked Strategy - design tokens
    Signature "memory color": electric indigo (--color-primary).
    To rebrand, change the color values in @theme below. Fonts are swapped in
    src/app/layout.tsx (next/font) and exposed here as --font-* variables.
@@ -12,9 +12,9 @@
   --color-ink: #0e0e12; /* primary text, dark bands */
   --color-ink-soft: #17161d; /* alternate dark band */
   --color-paper: #f7f5f0; /* page background */
-  --color-primary: #4f2ff0; /* electric indigo — memory color */
+  --color-primary: #4f2ff0; /* electric indigo - memory color */
   --color-primary-strong: #3b1fce; /* hover / indigo text on paper (AA) */
-  --color-accent: #ff5a36; /* warm coral — highlights, large accents only */
+  --color-accent: #ff5a36; /* warm coral - highlights, large accents only */
   --color-violet: #7c4dff; /* gradient mid-stop */
   --color-muted: #5c5b66; /* muted body text on paper (AA) */
   --color-line: #e4e1d8; /* hairlines / borders */
@@ -40,7 +40,7 @@
   --text-display-lg--line-height: 0.98;
   --text-display-lg--letter-spacing: -0.03em;
 
-  /* ---- Shadow (soft only — glass, not hard drop shadows) ---- */
+  /* ---- Shadow (soft only - glass, not hard drop shadows) ---- */
   --shadow-sm: 0 1px 2px rgba(14, 14, 18, 0.05), 0 1px 3px rgba(14, 14, 18, 0.06);
   --shadow-md: 0 8px 24px -6px rgba(14, 14, 18, 0.12), 0 2px 6px rgba(14, 14, 18, 0.06);
   --shadow-lg: 0 24px 60px -12px rgba(14, 14, 18, 0.22);
