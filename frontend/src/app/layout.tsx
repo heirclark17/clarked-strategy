@@ -1,30 +1,24 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 
 /**
  * Fonts (self-hosted via next/font - zero layout shift).
- * - Display: Bricolage Grotesque (characterful, variable) → font-display
- * - Body:    Inter (clean, legible)                       → font-body / font-sans
- * - Mono:    Geist Mono (numerals, eyebrows, step badges) → font-mono
+ * - Display: Playfair Display (editorial serif) → font-display
+ * - Body:    Inter (clean, legible)             → font-body / font-sans
  * To swap a face, change the import + loader here; the CSS var names in
  * globals.css (@theme) stay the same, so nothing else needs to change.
  */
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -39,13 +33,15 @@ export const metadata: Metadata = {
   },
   description: site.hero.subtitle,
   keywords: [
-    "marketing strategy studio",
+    "marketing and communications firm",
+    "media relations",
+    "public relations",
+    "B2B marketing",
+    "demand generation",
+    "crisis communications",
+    "social media strategy",
     "brand strategy",
-    "positioning",
-    "go-to-market",
-    "product launch marketing",
-    "content and paid marketing",
-    "startup marketing agency",
+    "Houston marketing agency",
   ],
   authors: [{ name: site.name }],
   openGraph: {
@@ -72,10 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${bricolage.variable} ${inter.variable} ${geistMono.variable} antialiased`}
-    >
+    <html lang="en" className={`${playfair.variable} ${inter.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
         <a href="#main" className="skip-link">
           Skip to content

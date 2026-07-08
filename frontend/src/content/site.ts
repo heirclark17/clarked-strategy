@@ -1,244 +1,218 @@
 /**
  * Single source of truth for all site copy.
  *
- * ⚑ EDIT THIS FILE to change what the visitor reads - headlines, services,
- * case studies, testimonials, contact details all live here. Placeholders that
- * need real data are marked with `TODO:` comments.
+ * EDIT THIS FILE to change what the visitor reads. All headlines, services,
+ * founder bio, and contact details live here. Gold-italic emphasis inside a
+ * serif heading is stored as { lead, em, tail } and rendered in JSX.
  *
  * Functional form config (field options, validation) lives separately in
- * src/lib/discovery-schema.ts - this file is prose only.
+ * src/lib/discovery-schema.ts and src/lib/contact-schema.ts.
  */
 
 export const site = {
   name: "Clarked Strategy",
   domain: "clarkedstrategygroup.com",
   email: "hello@clarkedstrategygroup.com",
-  tagline: "Marketing strategy that actually ships.",
+  phone: "", // TODO: real phone number (HTML had placeholder (713) 000-0000)
+  location: "Houston, TX. Serving clients nationally.",
+  tagline: "Marketing & Communications",
 
-  // Primary conversion action, repeated at every decision point.
-  cta: { label: "Start a Discovery Session", href: "/discovery" },
+  // Primary conversion: the light contact form on the homepage.
+  cta: { label: "Get Clarked", href: "#contact" },
+  // The deeper 6-step intake, kept available for serious leads.
+  discovery: { label: "Start a Discovery Session", href: "/discovery" },
 
   nav: [
-    { label: "Work", href: "/#work" },
-    { label: "Services", href: "/#services" },
-    { label: "Process", href: "/#process" },
-    { label: "About", href: "/#about" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "B2B", href: "#b2b" },
+    { label: "Approach", href: "#approach" },
+    { label: "Contact", href: "#contact" },
   ],
 
   hero: {
-    eyebrow: "Marketing strategy studio",
-    titleLead: "Turn a fuzzy brand idea into",
-    // Cycled in the hero headline - each is the payoff half of the sentence.
-    kineticWords: [
-      "a strategy that ships.",
-      "a launch that lands.",
-      "a pipeline that grows.",
-      "a brand people repeat.",
-    ],
+    eyebrow: "Clarked Strategy · Marketing & Communications",
+    title: { lead: "Your brand's moment to", em: "make noise", tail: "is right now." },
     subtitle:
-      "Clarked Strategy is a marketing studio for founders who are done guessing. We build the positioning, the plan, and the campaigns that move your product from “nobody knows us” to “how did we miss them.”",
-    primaryCta: { label: "Start a Discovery Session", href: "/discovery" },
-    secondaryCta: { label: "See our work", href: "/#work" },
+      "From media relations to B2B demand generation, we help ambitious brands cut through the clutter, own their narrative, and win in the marketplace.",
+    primaryCta: { label: "Explore Our Services", href: "#services" },
+    secondaryCta: { label: "Get Clarked Today", href: "#contact" },
+    scrollCue: "Scroll to explore",
   },
 
-  trust: {
-    heading: "Trusted by founders from pre-seed through Series B",
-    // Quiet credibility strip - swap for real client logos when available.
-    signals: [
-      "Pre-seed → Series B",
-      "B2B SaaS & consumer",
-      "Product & category launches",
-      "Founder-led teams",
-      "US · UK · Remote",
+  capabilities: [
+    "Media Relations",
+    "B2B Marketing",
+    "Social Media Strategy",
+    "Crisis Communications",
+    "Digital Advertising",
+    "Brand Strategy",
+  ],
+
+  about: {
+    eyebrow: "Who We Are",
+    title: "Built for brands that refuse to be ignored.",
+    body: [
+      "Clarked Strategy is a full-service marketing and communications firm built to help brands advance their presence across every channel that matters. We don't just craft campaigns, we build momentum.",
+      "Whether you're navigating a crisis, launching a new product, or trying to break through in a crowded market, we bring the strategy, relationships, and execution to get you there.",
     ],
+    stats: [
+      { value: "Full.", label: "Service Firm" },
+      { value: "360°", label: "Brand Coverage" },
+      { value: "Always.", label: "In Your Corner" },
+      { value: "Zero.", label: "Fluff. All Strategy." },
+    ],
+    quote: {
+      lead: "The brands that win aren't the loudest, they're the most",
+      em: "intentional",
+      tail: ".",
+      attribution: "The Clarked Strategy Philosophy",
+    },
   },
 
-  stats: {
-    eyebrow: "Proof, not adjectives",
-    title: "The numbers behind the work.",
-    // TODO: replace with real, defensible metrics before launch.
-    items: [
-      { value: 240, suffix: "+", label: "Campaigns launched" },
-      { value: 3.4, suffix: "×", decimals: 1, label: "Avg. qualified-pipeline lift" },
-      { value: 18, suffix: "K+", label: "Qualified leads generated" },
-      { value: 21, suffix: " days", label: "Avg. strategy-to-launch" },
+  founder: {
+    eyebrow: "Meet the Founder",
+    name: "Diamond Dixon-Clark",
+    title: "Founder & Principal Strategist, Clarked Strategy",
+    photo: "/diamond.png",
+    photoAlt: "Diamond Dixon-Clark, Founder of Clarked Strategy",
+    bio: [
+      "Diamond Dixon-Clark is a marketing and communications strategist with a passion for helping brands find their voice, and amplify it. She founded Clarked Strategy on a simple belief: that every brand, from emerging startups to established enterprises, deserves marketing that is intentional, data-informed, and built to last.",
+      "With deep expertise across media relations, B2B marketing, social strategy, crisis communications, and digital advertising, Diamond brings a full-funnel perspective to every client engagement. She's equal parts strategist and storyteller, focused not just on what brands say, but on how the right message, in the right place, at the right time creates real business momentum.",
+      "Based in Houston, TX, Diamond works with clients nationally across industries including technology, engineering, construction, energy, nonprofits, and healthcare.",
     ],
+    signature: "Diamond Dixon-Clark",
   },
 
   services: {
-    eyebrow: "What we do",
-    title: "One team, from the first idea to the first result.",
+    eyebrow: "What We Do",
+    title: "The full toolkit to advance your brand.",
     subtitle:
-      "We scope to where you actually are, not a generic retainer. Most engagements combine a few of these.",
+      "Every service we offer is built around one goal: positioning your brand where it needs to be, in the press, in the feed, in the conversation, and in the market.",
     items: [
       {
-        title: "Brand strategy",
-        body: "The story, the point of view, and the reason you win, turned into a foundation your whole team can build on.",
+        icon: "Newspaper",
+        name: "Media Relations",
+        body: "We cultivate the journalist relationships and press strategies that earn your brand coverage in the outlets that matter to your audience.",
       },
       {
-        title: "Positioning & messaging",
-        body: "Claim a category you can own. We sharpen who it’s for, why it’s different, and the words that make it obvious.",
+        icon: "Share2",
+        name: "Social Media Strategy",
+        body: "Platform-native content strategies, community management, and influencer partnerships designed to grow your audience and deepen engagement.",
       },
       {
-        title: "Go-to-market",
-        body: "A concrete plan with owners, channels, and a sequence, so launch day is execution, not improvisation.",
+        icon: "ShieldAlert",
+        name: "Crisis Communications",
+        body: "When the stakes are highest, our seasoned crisis team helps you respond swiftly, protect your reputation, and emerge stronger.",
       },
       {
-        title: "Content & organic",
-        body: "A content engine that compounds: the formats, cadence, and distribution that build an audience you keep.",
+        icon: "Target",
+        name: "Digital Advertising",
+        body: "Data-driven paid media across search, social, and programmatic channels, built to drive measurable ROI and real business outcomes.",
       },
       {
-        title: "Paid acquisition",
-        body: "Creative and channels tested against real economics: scaling what pays back, killing what doesn’t.",
+        icon: "PenLine",
+        name: "Content & Copywriting",
+        body: "Brand voice development, editorial calendars, campaign copy, and thought leadership content that positions you as the authority in your space.",
       },
       {
-        title: "Launch planning",
-        body: "The full moment: narrative, assets, press, and a rollout that turns a release into a milestone people notice.",
+        icon: "BarChart3",
+        name: "Brand Strategy",
+        body: "From positioning to visual identity, we help you build the strategic foundation that makes every other marketing effort more powerful.",
       },
     ],
   },
 
-  work: {
-    eyebrow: "Selected work",
-    title: "Work as proof.",
-    subtitle:
-      "Every engagement is a problem, an approach, and an outcome we can point to. A few we can talk about:",
-    // TODO: replace all three with real case studies (client name, real metrics, image).
-    caseStudies: [
+  b2b: {
+    eyebrow: "B2B Marketing",
+    title: "Marketing that speaks to decision-makers, not just audiences.",
+    body: [
+      "B2B marketing demands a different level of precision. Your buyers are sophisticated, the sales cycles are longer, and the stakes are higher. At Clarked Strategy, we specialize in B2B demand generation and brand building that moves prospects through the funnel and drives real pipeline growth.",
+      "We bridge the gap between brand awareness and revenue, ensuring your company is top of mind when it's time to buy.",
+    ],
+    industriesLabel: "Industries We Serve",
+    industries: ["Technology", "Engineering", "Construction", "Energy", "Nonprofits", "Healthcare"],
+    pillars: [
       {
-        client: "Northwind",
-        category: "B2B SaaS · Repositioning",
-        problem:
-          "A genuinely better finance-ops platform that buyers filed under “yet another dashboard.” Great product, invisible category.",
-        approach:
-          "Repositioned around a category they could own, rebuilt the launch narrative, and stood up a demand engine tied to real buying triggers.",
-        outcome: "3.4× qualified pipeline in two quarters",
-        metric: "3.4×",
-        metricLabel: "qualified pipeline",
-        tint: "primary",
+        icon: "Crosshair",
+        name: "Account-Based Marketing",
+        body: "Hyper-targeted campaigns designed around your ideal customer profile, reaching the right companies and the right contacts within them.",
       },
       {
-        client: "Tidepool",
-        category: "Consumer app · Growth",
-        problem:
-          "Loyal users and strong retention, but flat installs and a cost-per-install that made paid a dead end.",
-        approach:
-          "Reframed the value proposition around the moment that mattered, then went creator-led on paid with tightly-tested creative.",
-        outcome: "CAC down 38%, 22K installs in launch month",
-        metric: "−38%",
-        metricLabel: "cost to acquire",
-        tint: "accent",
+        icon: "Megaphone",
+        name: "Thought Leadership & PR",
+        body: "Position your executives and brand as the go-to authority in your industry through earned media, speaking opportunities, and editorial content.",
       },
       {
-        client: "Field & Forge",
-        category: "DTC marketplace · Launch",
-        problem:
-          "Launching a maker marketplace into a crowded space with no audience and a small budget.",
-        approach:
-          "Built a founder-story brand and a waitlist campaign that made the first drop feel like an event worth showing up for.",
-        outcome: "11K waitlist, first drop sold out in 48 hours",
-        metric: "48h",
-        metricLabel: "to sell out",
-        tint: "violet",
+        icon: "Users",
+        name: "LinkedIn & B2B Social",
+        body: "Strategic LinkedIn programs, organic content, paid campaigns, and executive brand-building that keep you visible where your buyers live.",
+      },
+      {
+        icon: "TrendingUp",
+        name: "Demand Generation",
+        body: "Full-funnel campaigns, from awareness to conversion, built to fill your pipeline with qualified prospects and shorten the path to revenue.",
+      },
+      {
+        icon: "FileText",
+        name: "Content Marketing",
+        body: "White papers, case studies, email sequences, and sales enablement content that educates your buyers and builds confidence in your solution.",
       },
     ],
   },
 
-  process: {
-    eyebrow: "How we work",
-    title: "Discovery-first, always.",
-    subtitle:
-      "We don’t start with tactics. We start by understanding your product, your buyer, and what winning actually looks like, which is exactly what the Discovery Session kicks off.",
+  approach: {
+    eyebrow: "How We Work",
+    title: "Strategy first. Execution always.",
     steps: [
       {
         no: "01",
-        title: "Discover",
-        body: "We map the product, the audience, the goals, and the competition, so strategy is built on your reality, not a template.",
+        title: "Discovery",
+        body: "We immerse ourselves in your brand, your market, your competitors, and your goals, so every recommendation is grounded in reality.",
       },
       {
         no: "02",
-        title: "Strategize",
-        body: "Positioning, messaging, and a prioritized plan with clear owners and a sequence you can actually run.",
+        title: "Strategy",
+        body: "We build a tailored roadmap of messaging architecture, channel mix, and campaign cadence, aligned to where your business needs to go.",
       },
       {
         no: "03",
-        title: "Build",
-        body: "We produce the assets (narrative, creative, pages, and campaigns), ready to ship, not stuck in review.",
+        title: "Execution",
+        body: "We execute with precision across every channel: media, digital, social, and beyond, turning strategy into real-world results.",
       },
       {
         no: "04",
-        title: "Launch",
-        body: "We put it live with a coordinated rollout across the channels where your buyers actually pay attention.",
-      },
-      {
-        no: "05",
-        title: "Measure",
-        body: "We track what moved, cut what didn’t, and hand you the playbook to keep compounding after we’re done.",
+        title: "Optimization",
+        body: "We track, report, and refine continuously, ensuring your investment compounds over time and your brand keeps gaining ground.",
       },
     ],
   },
 
-  about: {
-    eyebrow: "About",
-    title: "A studio, not an agency machine.",
-    body: [
-      "Clarked Strategy is a small, senior marketing studio. You work with the people doing the work. No account layers, no hand-offs to a junior team you never met on the pitch call.",
-      "We started this because most founders don’t have a marketing problem. They have a clarity problem. The product is real. The story isn’t sharp yet. We exist to fix that, then build the engine that turns a sharp story into growth you can measure.",
-    ],
-    points: [
-      "Senior operators on every engagement, no bait-and-switch",
-      "Opinionated strategy, backed by what the numbers say",
-      "We leave you with a playbook, not a dependency",
-    ],
-  },
-
-  testimonials: {
-    eyebrow: "In their words",
-    title: "The founders we’ve worked with.",
-    // TODO: replace with real quotes + attribution before launch.
-    quotes: [
-      {
-        quote:
-          "They found the story we’d been fumbling for two years in about three weeks. Our pipeline finally reflects how good the product actually is.",
-        name: "Founder & CEO",
-        role: "Seed-stage B2B SaaS",
-      },
-      {
-        quote:
-          "Most agencies sell you a retainer. Clarked sold us a plan we could actually run, and then ran it with us. Our best launch by a wide margin.",
-        name: "Co-founder",
-        role: "Consumer mobile app",
-      },
-      {
-        quote:
-          "Senior people, sharp opinions, zero fluff. They made decisions we’d been avoiding and the numbers moved within the first month.",
-        name: "Head of Growth",
-        role: "Series A marketplace",
-      },
-    ],
-  },
-
-  finalCta: {
-    title: "Let’s find the story that makes your product obvious.",
-    subtitle:
-      "Start with a Client Discovery Session. It’s where we learn your product, your buyer, and your goals, where the best engagements begin.",
-    primaryCta: { label: "Start a Discovery Session", href: "/discovery" },
+  ctaBand: {
+    lead: "Ready to get",
+    em: "Clarked",
+    tail: "? Let's build something remarkable.",
+    button: { label: "Start the Conversation", href: "#contact" },
   },
 
   contact: {
-    email: "hello@clarkedstrategygroup.com",
-    location: "Houston, TX · Remote-friendly",
+    eyebrow: "Get In Touch",
+    title: "Let's talk about your brand.",
+    body: "Whether you have a specific challenge in mind or you're just starting to think through your strategy, we'd love to hear from you. No pitch, no pressure, just a real conversation.",
+    detailsLabel: { email: "Email", phone: "Phone", location: "Based In" },
+    // The deeper 6-step intake offered as an alternative to the quick form.
+    discoveryPrompt: "Prefer a deeper dive?",
+    discoveryLink: "Start a Discovery Session",
   },
 
   footer: {
-    blurb:
-      "A senior marketing studio that turns fuzzy brand ideas into strategy, launches, and growth you can measure.",
-    // TODO: point at real profiles.
-    socials: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/" },
-      { label: "Instagram", href: "https://www.instagram.com/" },
-      { label: "X", href: "https://x.com/" },
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Services", href: "#services" },
+      { label: "Approach", href: "#approach" },
+      { label: "Contact", href: "#contact" },
     ],
+    copyright: "© 2025 Clarked Strategy LLC. All rights reserved.",
   },
 } as const;
 

@@ -331,10 +331,10 @@ export function ChipMultiSelect({
               type="button"
               aria-pressed={selected}
               onClick={() => toggle(opt)}
-              className={`min-h-[44px] rounded-full border px-4 text-sm font-medium transition-colors ${
+              className={`min-h-[44px] rounded-sm border px-4 text-sm font-medium transition-colors ${
                 selected
-                  ? "border-primary bg-primary text-white"
-                  : "border-line bg-white text-ink hover:border-ink/40"
+                  ? "border-ink bg-ink text-white"
+                  : "border-line bg-white text-ink hover:border-gold"
               }`}
             >
               {opt}

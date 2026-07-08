@@ -2,21 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site } from "@/content/site";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Lock body scroll while the mobile menu is open.
   useEffect(() => {
@@ -27,68 +17,67 @@ export function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-line/70 bg-paper/85 backdrop-blur-md"
-          : "border-b border-transparent"
-      }`}
-    >
-      <Container className="flex h-16 items-center justify-between md:h-[4.5rem]">
-        <Link href="/" className="flex items-center" aria-label={`${site.name} home`}>
-          <span className="font-display text-lg font-semibold tracking-tight text-ink">
-            {site.name}
-          </span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/15 bg-ink/95 backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1360px] items-center justify-between px-6 py-4 md:px-10 lg:px-16 md:py-5">
+        <Link
+          href="/"
+          aria-label={`${site.name} home`}
+          className="text-lg font-semibold uppercase tracking-[0.18em] text-white"
+        >
+          Clarked<span className="text-gold">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-10 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-ink/[0.05] hover:text-ink"
+              className="text-[0.78rem] font-medium uppercase tracking-[0.1em] text-white/70 transition-colors hover:text-gold"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button href={site.cta.href} size="md">
-            {site.cta.label}
-            <ArrowRight className="size-4" aria-hidden />
-          </Button>
-        </div>
+        <a
+          href={site.cta.href}
+          className="hidden rounded-sm bg-gold px-6 py-2.5 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-ink transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-gold-light md:inline-block"
+        >
+          {site.cta.label}
+        </a>
 
         <button
           type="button"
-          className="grid size-11 place-items-center rounded-xl text-ink md:hidden"
+          className="grid size-11 place-items-center text-white md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
         </button>
-      </Container>
+      </div>
 
       {open ? (
-        <div className="border-t border-line bg-paper md:hidden">
-          <Container className="flex flex-col gap-1 py-4">
+        <div className="border-t border-gold/15 bg-ink md:hidden">
+          <nav className="mx-auto flex max-w-[1360px] flex-col gap-1 px-6 py-4" aria-label="Mobile">
             {site.nav.map((item) => (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-ink/[0.05]"
+                className="py-3 text-sm font-medium uppercase tracking-[0.1em] text-white/80 hover:text-gold"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
-            <Button href={site.cta.href} size="lg" className="mt-2 w-full">
+            <a
+              href={site.cta.href}
+              onClick={() => setOpen(false)}
+              className="mt-3 rounded-sm bg-gold px-6 py-3 text-center text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-ink"
+            >
               {site.cta.label}
-              <ArrowRight className="size-4" aria-hidden />
-            </Button>
-          </Container>
+            </a>
+          </nav>
         </div>
       ) : null}
     </header>

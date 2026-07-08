@@ -39,8 +39,8 @@ export default function ThankYouPage() {
               <ArrowRight className="size-4 rotate-180" aria-hidden />
               Back to home
             </Button>
-            <Button href="/#work" size="lg">
-              See our work
+            <Button href="/#services" size="lg">
+              Explore our services
               <ArrowRight className="size-4" aria-hidden />
             </Button>
           </div>

@@ -1,14 +1,14 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { Stats } from "@/components/sections/Stats";
-import { Services } from "@/components/sections/Services";
-import { Work } from "@/components/sections/Work";
-import { Process } from "@/components/sections/Process";
+import { Capabilities } from "@/components/sections/Capabilities";
 import { About } from "@/components/sections/About";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { Founder } from "@/components/sections/Founder";
+import { Services } from "@/components/sections/Services";
+import { B2B } from "@/components/sections/B2B";
+import { Approach } from "@/components/sections/Approach";
+import { CtaBand } from "@/components/sections/CtaBand";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -16,14 +16,14 @@ export default function Home() {
       <Header />
       <main id="main" className="flex-1">
         <Hero />
-        <TrustBar />
-        <Stats />
-        <Services />
-        <Work />
-        <Process />
+        <Capabilities />
         <About />
-        <Testimonials />
-        <FinalCta />
+        <Founder />
+        <Services />
+        <B2B />
+        <Approach />
+        <CtaBand />
+        <Contact />
       </main>
       <Footer />
     </>

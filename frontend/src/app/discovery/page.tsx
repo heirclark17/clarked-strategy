@@ -23,13 +23,12 @@ export default function DiscoveryPage() {
       {/* Slim, distraction-reduced header */}
       <header className="border-b border-line">
         <Container className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
-            <span className="grid size-8 place-items-center rounded-lg bg-ink font-display text-base font-bold text-white">
-              C
-            </span>
-            <span className="font-display text-base font-semibold tracking-tight text-ink">
-              {site.name}
-            </span>
+          <Link
+            href="/"
+            className="text-base font-semibold uppercase tracking-[0.18em] text-ink"
+            aria-label={`${site.name} home`}
+          >
+            Clarked<span className="text-gold">.</span> Strategy
           </Link>
           <Link
             href="/"

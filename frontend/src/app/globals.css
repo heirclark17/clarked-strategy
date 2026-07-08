@@ -1,50 +1,57 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   Clarked Strategy - design tokens
-   Signature "memory color": electric indigo (--color-primary).
+   Clarked Strategy - design tokens (navy + gold luxury editorial)
    To rebrand, change the color values in @theme below. Fonts are swapped in
    src/app/layout.tsx (next/font) and exposed here as --font-* variables.
    ========================================================================= */
 
 @theme {
   /* ---- Color ---- */
-  --color-ink: #0e0e12; /* primary text, dark bands */
-  --color-ink-soft: #17161d; /* alternate dark band */
-  --color-paper: #f7f5f0; /* page background */
-  --color-primary: #4f2ff0; /* electric indigo - memory color */
-  --color-primary-strong: #3b1fce; /* hover / indigo text on paper (AA) */
-  --color-accent: #ff5a36; /* warm coral - highlights, large accents only */
-  --color-violet: #7c4dff; /* gradient mid-stop */
-  --color-muted: #5c5b66; /* muted body text on paper (AA) */
-  --color-line: #e4e1d8; /* hairlines / borders */
-  --color-line-dark: rgba(255, 255, 255, 0.14); /* hairlines on dark */
+  --color-ink: #0d1b2a; /* primary dark navy (dark bands, headings) */
+  --color-ink-mid: #1a2e42; /* lighter navy (hover states) */
+  --color-gold: #c9a84c; /* primary gold accent */
+  --color-gold-light: #e8d08a; /* lighter gold (hover) */
+  --color-cream: #f9f6ef; /* warm off-white section bg */
+  --color-gray: #6b7280; /* muted body text / labels */
+  --color-line: #e5e7eb; /* hairlines / borders */
+  --color-line-dark: rgba(201, 168, 76, 0.18); /* gold hairline on navy */
   --color-card: #ffffff; /* card surface */
+  --color-text: #1a1a1a; /* default body text */
   --color-success: #15803d;
-  --color-error: #dc2626;
+  --color-error: #b91c1c;
   --color-warning: #b45309;
 
+  /* Back-compat aliases: the discovery + contact form components were styled on
+     these older token names. Map them onto the navy/gold palette so the form
+     adopts the new look without rewiring. */
+  --color-primary: #c9a84c; /* → gold */
+  --color-primary-strong: #a8842f; /* darker gold (AA on light) */
+  --color-accent: #c9a84c; /* → gold */
+  --color-muted: #6b7280; /* → gray */
+  --color-paper: #f9f6ef; /* → cream */
+  --color-ink-soft: #1a2e42; /* → ink-mid */
+
   /* ---- Type ---- */
-  --font-display: var(--font-bricolage), "Georgia", serif;
+  --font-display: var(--font-playfair), "Georgia", serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Fluid display sizes (clamp mobile → desktop) */
-  --text-display-sm: clamp(1.75rem, 1.2rem + 2.4vw, 2.5rem); /* 28 → 40 */
-  --text-display-sm--line-height: 1.1;
-  --text-display: clamp(2.25rem, 1.4rem + 3.8vw, 4rem); /* 36 → 64 */
-  --text-display--line-height: 1.04;
-  --text-display--letter-spacing: -0.02em;
-  --text-display-lg: clamp(2.75rem, 1.2rem + 6.6vw, 5.5rem); /* 44 → 88 */
-  --text-display-lg--line-height: 0.98;
-  --text-display-lg--letter-spacing: -0.03em;
+  /* Fluid Playfair display sizes (clamp mobile → desktop) */
+  --text-display-sm: clamp(1.6rem, 1.1rem + 2.2vw, 2.25rem);
+  --text-display-sm--line-height: 1.15;
+  --text-display: clamp(2rem, 1.2rem + 3vw, 3.25rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.01em;
+  --text-display-lg: clamp(2.75rem, 1rem + 7vw, 5.5rem);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.015em;
 
-  /* ---- Shadow (soft only - glass, not hard drop shadows) ---- */
-  --shadow-sm: 0 1px 2px rgba(14, 14, 18, 0.05), 0 1px 3px rgba(14, 14, 18, 0.06);
-  --shadow-md: 0 8px 24px -6px rgba(14, 14, 18, 0.12), 0 2px 6px rgba(14, 14, 18, 0.06);
-  --shadow-lg: 0 24px 60px -12px rgba(14, 14, 18, 0.22);
-  --shadow-glow: 0 18px 50px -12px rgba(79, 47, 240, 0.45);
+  /* ---- Shadow (soft; the look is border-driven) ---- */
+  --shadow-sm: 0 1px 2px rgba(13, 27, 42, 0.05), 0 1px 3px rgba(13, 27, 42, 0.05);
+  --shadow-md: 0 12px 32px -10px rgba(13, 27, 42, 0.16);
+  --shadow-lg: 0 28px 60px -16px rgba(13, 27, 42, 0.28);
+  --shadow-glow: 0 14px 36px -12px rgba(201, 168, 76, 0.4);
 
   /* ---- Motion ---- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -60,71 +67,77 @@
 
 html {
   scroll-behavior: smooth;
-  /* Offset anchor jumps for the sticky header */
-  scroll-padding-top: 5.5rem;
+  /* Offset anchor jumps for the fixed nav */
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-card);
+  color: var(--color-text);
   font-family: var(--font-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: #fff;
+  background: var(--color-gold);
+  color: var(--color-ink);
 }
 
 /* Visible, consistent focus ring for keyboard users */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* =========================================================================
    Utility classes
    ========================================================================= */
 
-/* Small uppercase section label */
+/* Small uppercase label - Inter, wide tracking, gold */
 .eyebrow {
-  letter-spacing: 0.16em;
+  font-family: var(--font-body);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.72rem;
-  font-weight: 600;
-  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-gold);
 }
 
-/* Dotted texture behind dark sections */
-.bg-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
+/* Gold italic emphasis inside serif display headings */
+.font-display em,
+em.accent {
+  font-style: italic;
+  color: var(--color-gold);
 }
 
-/* Saturated gradient mesh for hero / color-blocked bands */
+/* Giant faded "CLARKED" watermark behind the hero headline */
+.hero-watermark {
+  position: absolute;
+  bottom: -0.1em;
+  right: -0.05em;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(8rem, 18vw, 18rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: rgba(201, 168, 76, 0.06);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Solid navy band (used by the /thank-you page) */
 .gradient-mesh {
   background-color: var(--color-ink);
-  background-image:
-    radial-gradient(at 18% 22%, rgba(79, 47, 240, 0.62) 0px, transparent 52%),
-    radial-gradient(at 82% 14%, rgba(124, 77, 255, 0.5) 0px, transparent 46%),
-    radial-gradient(at 62% 88%, rgba(255, 90, 54, 0.42) 0px, transparent 48%),
-    radial-gradient(at 8% 82%, rgba(124, 77, 255, 0.32) 0px, transparent 44%);
 }
 
-/* One moving element: a slow-drifting blurred orb behind the hero headline */
-.hero-orb {
-  animation: orb-drift 18s var(--ease-out) infinite alternate;
-  will-change: transform;
-}
-@keyframes orb-drift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  100% {
-    transform: translate3d(6%, -5%, 0) scale(1.12);
-  }
+/* Faint gold dot texture on dark bands */
+.bg-grid {
+  background-image: radial-gradient(rgba(201, 168, 76, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 /* Skip link for keyboard / screen-reader users */
@@ -132,11 +145,12 @@ body {
   position: absolute;
   left: 1rem;
   top: -3rem;
-  z-index: 100;
-  background: var(--color-ink);
-  color: #fff;
+  z-index: 200;
+  background: var(--color-gold);
+  color: var(--color-ink);
   padding: 0.6rem 1rem;
-  border-radius: 10px;
+  border-radius: 2px;
+  font-weight: 600;
   transition: top var(--dur-fast) var(--ease-out);
 }
 .skip-link:focus {
@@ -149,9 +163,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .hero-orb {
-    animation: none;
   }
   *,
   *::before,
