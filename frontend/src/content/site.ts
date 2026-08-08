@@ -153,11 +153,6 @@ export const site = {
         name: "Demand Generation",
         body: "Full-funnel campaigns, from awareness to conversion, built to fill your pipeline with qualified prospects and shorten the path to revenue.",
       },
-      {
-        icon: "FileText",
-        name: "Content Marketing",
-        body: "White papers, case studies, email sequences, and sales enablement content that educates your buyers and builds confidence in your solution.",
-      },
     ],
   },
 

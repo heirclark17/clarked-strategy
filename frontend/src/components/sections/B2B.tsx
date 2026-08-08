@@ -1,4 +1,4 @@
-import { Crosshair, Megaphone, Users, TrendingUp, FileText, type LucideIcon } from "lucide-react";
+import { Crosshair, Megaphone, Users, TrendingUp, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
 
@@ -7,7 +7,6 @@ const ICONS: Record<string, LucideIcon> = {
   Megaphone,
   Users,
   TrendingUp,
-  FileText,
 };
 
 export function B2B() {
