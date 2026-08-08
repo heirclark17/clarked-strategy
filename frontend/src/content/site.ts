@@ -36,7 +36,8 @@ export const site = {
     subtitle:
       "From media relations to B2B demand generation, we help ambitious brands cut through the clutter, own their narrative, and win in the marketplace.",
     primaryCta: { label: "Explore Our Services", href: "#services" },
-    secondaryCta: { label: "Get Clarked Today", href: "#contact" },
+    // Split so only the brand word renders italic (see Hero.tsx).
+    secondaryCta: { lead: "Get", em: "Clarked", tail: "Today", href: "#contact" },
     scrollCue: "Scroll to explore",
   },
 
@@ -72,16 +73,16 @@ export const site = {
 
   founder: {
     eyebrow: "Meet the Founder",
-    name: "Diamond Dixon-Clark",
+    name: "Diamond Clark",
     title: "Founder & Principal Strategist, Clarked Strategy",
     photo: "/diamond.png",
-    photoAlt: "Diamond Dixon-Clark, Founder of Clarked Strategy",
+    photoAlt: "Diamond Clark, Founder of Clarked Strategy",
     bio: [
-      "Diamond Dixon-Clark is a marketing and communications strategist with a passion for helping brands find their voice, and amplify it. She founded Clarked Strategy on a simple belief: that every brand, from emerging startups to established enterprises, deserves marketing that is intentional, data-informed, and built to last.",
+      "Diamond Clark is a marketing and communications strategist with a passion for helping brands find their voice, and amplify it. She founded Clarked Strategy on a simple belief: that every brand, from emerging startups to established enterprises, deserves marketing that is intentional, data-informed, and built to last.",
       "With deep expertise across media relations, B2B marketing, social strategy, crisis communications, and digital advertising, Diamond brings a full-funnel perspective to every client engagement. She's equal parts strategist and storyteller, focused not just on what brands say, but on how the right message, in the right place, at the right time creates real business momentum.",
       "Based in Houston, TX, Diamond works with clients nationally across industries including technology, engineering, construction, energy, nonprofits, and healthcare.",
     ],
-    signature: "Diamond Dixon-Clark",
+    signature: "Diamond Clark",
   },
 
   services: {

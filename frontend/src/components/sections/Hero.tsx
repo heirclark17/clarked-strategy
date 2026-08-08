@@ -31,8 +31,14 @@ export function Hero() {
             <Button href={primaryCta.href} size="lg">
               {primaryCta.label}
             </Button>
-            <Button href={secondaryCta.href} variant="ghost" onDark className="italic">
-              {secondaryCta.label}
+            <Button href={secondaryCta.href} variant="ghost" onDark>
+              {/* One span, not three children: Button is `inline-flex gap-2`, so
+                  loose text nodes would become separate flex items and pick up
+                  a 0.5rem gap between every word. */}
+              <span>
+                {secondaryCta.lead} <em className="italic">{secondaryCta.em}</em>{" "}
+                {secondaryCta.tail}
+              </span>
             </Button>
           </div>
         </Reveal>
