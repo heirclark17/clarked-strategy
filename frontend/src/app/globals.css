@@ -113,6 +113,14 @@ em.accent {
   color: var(--color-gold);
 }
 
+/* On a gold background the gold em is invisible. Add `em-ink` to the heading
+   to keep the italic but paint the emphasis navy instead. Must be a real rule
+   (not a Tailwind utility): the rule above is unlayered, so it outranks
+   anything in @layer utilities no matter the specificity. */
+.font-display.em-ink em {
+  color: var(--color-ink);
+}
+
 /* Giant faded "CLARKED" watermark behind the hero headline */
 .hero-watermark {
   position: absolute;
@@ -120,8 +128,12 @@ em.accent {
   right: -0.05em;
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: clamp(8rem, 18vw, 18rem);
+  /* No lower bound: an 8rem floor kept the word wider than the viewport on
+     phones, so "CLARKED" was clipped at both edges. Sizing purely off vw (up
+     to the 18rem desktop cap) keeps the whole word on screen at every width. */
+  font-size: min(17vw, 18rem);
   letter-spacing: 0.08em;
+  white-space: nowrap;
   line-height: 1;
   color: rgba(201, 168, 76, 0.06);
   pointer-events: none;

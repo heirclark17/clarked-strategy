@@ -9,7 +9,7 @@ export function CtaBand() {
     <div className="bg-gold">
       <div className="mx-auto flex max-w-[1360px] flex-col items-center gap-8 px-6 py-20 text-center md:flex-row md:items-center md:justify-between md:px-10 md:py-24 md:text-left lg:px-16">
         <Reveal className="md:max-w-[720px]">
-          <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-normal leading-[1.2] text-ink">
+          <h2 className="em-ink font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-normal leading-[1.2] text-ink">
             {ctaBand.lead} <em>{ctaBand.em}</em>
             {ctaBand.tail}
           </h2>

@@ -21,6 +21,9 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  // Italic face is needed for the hero's secondary CTA. Without it the browser
+  // synthesizes a faux-oblique, which looks skewed on uppercase tracked text.
+  style: ["normal", "italic"],
 });
 
 const title = `${site.name} | ${site.tagline}`;

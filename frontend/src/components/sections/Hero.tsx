@@ -31,7 +31,7 @@ export function Hero() {
             <Button href={primaryCta.href} size="lg">
               {primaryCta.label}
             </Button>
-            <Button href={secondaryCta.href} variant="ghost" onDark>
+            <Button href={secondaryCta.href} variant="ghost" onDark className="italic">
               {secondaryCta.label}
             </Button>
           </div>
